@@ -4,9 +4,8 @@ simulationViewPerspectives: 000000ff000000010000000200000118000003ca010000000201
 sceneTreePerspectives: 000000ff00000001000000030000001c000002b5000000fa0100000002010000000200
 maximizedDockId: -1
 centralWidgetVisible: 1
-userInteractions: 3dContextMenuDisabled::objectMoveDisabled::forceAndTorqueDisabled
 orthographicViewHeight: 1
-textFiles: 0 "controllers/move_in_maze/move_in_maze.py"
+textFiles: 0 "controllers/participant/participant.py"
 robotWindow: robot
 consoles: Console:All:All
 renderingDevicePerspectives: laptop(1):display;0;1.07258;0;0

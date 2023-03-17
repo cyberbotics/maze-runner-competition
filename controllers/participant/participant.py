@@ -1,26 +1,58 @@
-"""Simple robot controller."""
+"""Naive maze runner controller."""
 
 from controller import Robot
-import sys
 
-# Define the target motor position in radians.
-target = 1
-
-# Get pointer to the robot.
+# Get reference to the robot.
 robot = Robot()
 
-# Print the program output on the console
-print("Move the motors of the Thymio II to position " + str(target) + ".")
+# Get simulation step length.
+timeStep = int(robot.getBasicTimeStep())
 
-# Set the target position of the left and right wheels motors.
-robot.getDevice("motor.left").setPosition(target)
-robot.getDevice("motor.right").setPosition(target)
+# Constants of the Thymio II motors and distance sensors.
+maxMotorVelocity = 6
 
-# Run the simulation for 10 seconds
-robot.step(10000)
+# Get left and right wheel motors.
+leftMotor = robot.getDevice("motor.left")
+rightMotor = robot.getDevice("motor.right")
 
-# This is the simplest controller that works for this competition
-# If you want to experiment with more complex functions, you can read the programming guide here:
-# https://www.cyberbotics.com/doc/guide/controller-programming?tab-language=python
-# or the Robot() documentation here:
-# https://cyberbotics.com/doc/reference/robot?tab-language=python
+# Frontal distance sensors that can be use to detect the walls.
+outerLeftSensor = robot.getDevice("prox.horizontal.0")
+centralLeftSensor = robot.getDevice("prox.horizontal.1")
+centralSensor = robot.getDevice("prox.horizontal.2")
+centralRightSensor = robot.getDevice("prox.horizontal.3")
+outerRightSensor = robot.getDevice("prox.horizontal.4")
+
+# Enable sensors.
+outerLeftSensor.enable(timeStep)
+centralLeftSensor.enable(timeStep)
+centralSensor.enable(timeStep)
+centralRightSensor.enable(timeStep)
+outerRightSensor.enable(timeStep)
+
+# Get and enable ground sensors to detect the black circles.
+# groundLeftSensor = robot.getDevice("prox.ground.0")
+# groundRightSensor = robot.getDevice("prox.ground.1")
+# groundLeftSensor.enable(timeStep)
+# groundRightSensor.enable(timeStep)
+
+# Disable motor PID control mode.
+leftMotor.setPosition(float('inf'))
+rightMotor.setPosition(float('inf'))
+
+# Set ideal motor velocity.
+velocity = 0.7 * maxMotorVelocity
+
+isRotating = False
+while robot.step(timeStep) != -1:
+    # Read values from four distance sensors.
+    if not isRotating and centralSensor.getValue() > 3500:
+        # Black circle detected.
+        isRotating = True
+    elif isRotating and outerLeftSensor.getValue() == 0:
+        isRotating = False
+
+    leftMotor.setVelocity(velocity)
+    if isRotating:
+        rightMotor.setVelocity(-velocity)
+    else:
+        rightMotor.setVelocity(velocity)
