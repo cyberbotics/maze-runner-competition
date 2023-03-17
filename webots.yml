@@ -1,8 +1,8 @@
 publish: true
 type: competition
 world:
-  file: worlds/robot_programming.wbt
-  max-duration: 30
-  metric: percent
+  file: worlds/maze_runner.wbt
+  max-duration: 60
+  metric: time-speed
   higher-is-better: true
 dockerCompose: competition:webots-project/controllers/participant/
