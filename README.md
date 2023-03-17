@@ -63,7 +63,7 @@ Otherwise, you must grant access to your repository to the competition organizer
 
 - [Click here](../../settings/access) to go to the "Collaborators" setting page. You might need to confirm the access by re-entering your GitHub password.
 - You should see a "Manage access" box where you will see the current collaborators of the repo.
-Click on the "Add people" and search for "[ORGANIZER_USERNAME](https://github.com/ORGANIZER_USERNAME)".
+Click on the "Add people" and search for "[omichel](https://github.com/omichel)".
 When you found the organizer, add him to the repository.
 
 ### 3. Modify your Robot Controller
@@ -97,4 +97,4 @@ Once you are satisfied with your changes, you can push them to GitHub to trigger
 
 Your controller is evaluated in a [Docker container](https://www.docker.com/resources/what-container/). If your robot controller has dependencies, such as some specific libraries, python modules or a complete ROS framework, be sure to update the [controllers/Dockerfile](controllers/Dockerfile) to include all these dependencies. The default Webots Docker container includes the tools needed to run and compile simple C, C++ and Python controllers.
 
-[1]: https://webots.cloud/run?version=R2023b&url=https%3A%2F%2Fgithub.com%2FORGANIZER_USERNAME%2FORGANIZER_REPOSITORY%2Fblob%2Fmain%2Fworlds%2Frobot_programming.wbt&type=competition "Leaderboard"
+[1]: https://webots.cloud/run?version=R2023b&url=https%3A%2F%2Fgithub.com%2Fcyberbotics%2Fmaze-runner-competition%2Fblob%2Fmain%2Fworlds%2Fmaze_runner.wbt&type=competition "Leaderboard"
