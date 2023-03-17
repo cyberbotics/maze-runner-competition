@@ -1,4 +1,4 @@
-#VRML_SIM R2022b utf8
+#VRML_SIM R2023b utf8
 
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/lights/protos/CeilingLight.proto"
@@ -42,7 +42,7 @@ WorldInfo {
 }
 Viewpoint {
   orientation 0.38263647806712514 0.45616835349419954 -0.8034299962801845 1.863251904563074
-  position 0.10584067356190273 0.46508417348331055 1.7483738520122416
+  position 0.18917438352229696 0.9202347187164704 2.4446278486927135
   followSmoothness 0.01
 }
 TexturedBackground {
@@ -243,9 +243,8 @@ DEF THYMIO2 Thymio2 {
   rotation 0.0014800006661173696 0.9997794499798363 0.020949009428711335 -0.014665
   name "participant"
   controller "participant"
-  controllerArgs []
-  synchronization FALSE
   window "maze_runner"
+  synchronization FALSE
 }
 MazeRunnerBenchmark {
 }
